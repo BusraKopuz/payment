@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 85px;
+    padding: 12px;
+    background-color: #fff;
+}
+
+.navbar-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.figure {
+    margin-right: 10px;
+}
