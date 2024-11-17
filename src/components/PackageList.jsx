@@ -11,7 +11,7 @@ function PackageList() {
 
     const dispatch = useDispatch();
     const {packages} = useSelector((store) => store.package);
-    const {totalPrice} = useSelector((state) => state.package.totalPrice);
+    const totalPrice = useSelector((state) => state.package.totalPrice);
     console.log(packages)
 
     useEffect(()=>{
@@ -31,7 +31,7 @@ function PackageList() {
           <div>
             Seçilen Paket Tutarı: <span className='container-footer-price'>{totalPrice}₺</span>
           </div>
-          <Link>
+          <Link to={"/payment"}>
             <Button size='large' type='primary'>Devam Et</Button>
           </Link>
         </div>

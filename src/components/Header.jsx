@@ -15,9 +15,8 @@ function Header() {
     const {user} = useSelector((store) => store.user)
 
     const logoutHandle = () => {
-        dispatch();
         dispatch(logoutUser());
-        navigate("/");
+        navigate("/LoginForm");
     }
   return (
     <nav className='navbar'>
@@ -28,8 +27,8 @@ function Header() {
         <div className='navbar-info'>
             <figure className='figure'>
                 <img src={User} />
-            </figure>
-            <span>{user.fullname}</span>
+            </figure> 
+            <span>{user.fullName}</span>
             <Button type='primary' danger onClick={() => logoutHandle()} >Çıkış</Button>
         </div>
     </nav>

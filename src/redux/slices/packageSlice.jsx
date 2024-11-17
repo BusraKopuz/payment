@@ -19,18 +19,27 @@ export const packageSlice = createSlice({
     name: "packages",
     initialState,
     reducers: {
+        togglePackage: (state, action) => {
+            const { selectedId, selectedAmount } = action.payload;
+            const exists = state.selectedPackage.find(pkg => pkg.id === selectedId);
+
+            const selectedPkg = state.packages.find(pkg => pkg.id === selectedId);
+
+            const selectedName = selectedPkg ? selectedPkg.name : undefined;
+            const selectedCurrency = selectedPkg ? selectedPkg.currency : undefined;
+
+            if (exists) {
+                state.selectedPackage = state.selectedPackage.filter(pkg => pkg.id !== selectedId);
+                state.totalPrice -= selectedAmount;
+            } else {
+                state.selectedPackage.push({ id: selectedId, amount: selectedAmount,  name: selectedName, 
+                    currency: selectedCurrency });
+            }
+            state.totalPrice += selectedAmount;
+        },
         updateTotalPrice: (state, action) => {
             state.totalPrice = action.payload;
         },
-        addToSelectedPackage: (state, action) => {
-            state.selectedPackage.push(action.payload);
-            state.totalPrice += action.payload.amount; 
-        },
-        removeFromSelectedPackage: (state, action) => {
-            state.selectedPackage = state.selectedPackage.filter(pkg => pkg.id !== action.payload.id);
-            state.totalPrice -= action.payload.amount; 
-        }
-
     },
     extraReducers: (builder) => {
         builder.addCase(getAllProducts.pending, (state) => {
@@ -44,6 +53,6 @@ export const packageSlice = createSlice({
     }
 })
 
-export const { updateTotalPrice, addToSelectedPackage, removeFromSelectedPackage } = packageSlice.actions
+export const { togglePackage, updateTotalPrice } = packageSlice.actions
 
 export default packageSlice.reducer

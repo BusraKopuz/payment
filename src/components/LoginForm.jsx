@@ -1,11 +1,12 @@
 import React from 'react'
 import { Button, Form, Input } from 'antd';
 import { UserOutlined, MailOutlined } from '@ant-design/icons';
-import '../components/LoginForm.css'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../redux/slices/loginSlice';
 import { Spin } from 'antd';
+
+import '../components/LoginForm.css'
 
 
 
@@ -26,6 +27,8 @@ function LoginForm() {
                 }        
             })
     };
+
+
   return (
     <div className='login-container'>
         <Form

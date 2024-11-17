@@ -17,10 +17,10 @@
     align-items: center;
     border-radius: 8px;
     padding: 0.5rem;
+}
 
-    .container_footer_totalprice {
-        font-weight: 700;
-    }
+.container-footer-price {
+    font-weight: 700;
 }
 
 @media (max-width: 925px) {

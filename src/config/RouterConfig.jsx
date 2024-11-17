@@ -3,7 +3,10 @@ import { Route, Routes, Navigate} from 'react-router-dom'
 import PackageList from '../components/PackageList'
 import LoginForm from '../components/LoginForm'
 import Header from '../components/Header'
+import PaymentPage from '../components/PaymentPage'
+
 import { useSelector } from 'react-redux'
+
 
 
 function RouterConfig() {
@@ -11,17 +14,23 @@ function RouterConfig() {
   return (
     <Routes>
     
-        <Route path='/' element={user ? <Navigate to="/package-list" /> : <LoginForm />} />        
+        <Route path='/LoginForm' element={user.fullName  != "" ? <Navigate to="/package-list" /> : <LoginForm />} />        
        
         <Route path="/package-list" element={
-            user ? (
+            user.fullName != "" ? (
                 <>
                     <Header />
                     <PackageList />
                 </>
             ) : (
-                <Navigate to="/" /> 
+                <LoginForm/>
             )
+        } />
+        <Route path="payment" element={
+            <>
+                <Header />
+                <PaymentPage />
+            </>
         } />
     </Routes>
   )

@@ -23,11 +23,14 @@
 .container-context-title-name {
     font-size: 18px;
     font-weight: 700;
+    margin-left: 10px;
 }
 
 .container-context-title-price {
     font-size: 18px;
     font-weight: 700;
+    margin-left: 300px;
+    margin-top: -25px;
 }
 
 .container-context-detail {
@@ -61,4 +64,12 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 0.75rem;
+}
+
+.selected {
+    border: 3px #7ac500 solid;
+    border-radius: 3px;
+}
+.ant-card-body{
+    padding: 0px !important;
 }
